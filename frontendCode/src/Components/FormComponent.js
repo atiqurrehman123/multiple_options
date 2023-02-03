@@ -4,6 +4,7 @@ import { BASEURL } from "../utils";
 const FormComponent = ({ allQuestions, setAllQuestions }) => {
     const [questions, setQuestions] = useState([{ question: '', options: [] }]);
     const [addOptionButton, setAddOptionButton] = useState(true)
+    const [options, setOptions] = useState("")
 
     const handleQuestionChange = (e, index) => {
         const newQuestions = [...questions];
@@ -21,7 +22,7 @@ const FormComponent = ({ allQuestions, setAllQuestions }) => {
         const newQuestions = [...questions];
         newQuestions[questionIndex].options.push('');
         setQuestions(newQuestions);
-        if (newQuestions[0].options.length > 1) {
+        if (newQuestions[0].options.length > options - 1) {
             setAddOptionButton(false)
         }
     };
@@ -84,7 +85,12 @@ const FormComponent = ({ allQuestions, setAllQuestions }) => {
                         </div>
                     ))}
                     {!addOptionButton && <button id="submit" onClick={() => HandleSubmit()}>Submit</button>}
-                    {addOptionButton && <button id="addOption" onClick={() => addOption(questionIndex)}>Add Option</button>
+                    {options && addOptionButton && <button id="addOption" onClick={() => addOption(questionIndex)}>Add Option</button>
+                    }
+                    {!options && <button id="addOption" onClick={() => {
+                        const requiredOptions = prompt("How many options you need");
+                        setOptions(requiredOptions)
+                    }}>How many options you need</button>
                     }
 
                 </div>
