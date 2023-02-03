@@ -4,7 +4,7 @@ import FormComponent from "./Components/FormComponent";
 import './App.css';
 import axios from "axios"
 import ClockLoader from "react-spinners/ClockLoader";
-
+import { BASEURL } from "./utils";
 
 function App() {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -12,7 +12,7 @@ function App() {
   const getAllMultipleOptions = async () => {
 
     try {
-      const allOptions = await axios.get("http://localhost:8004/api/multipleOption/getAll");
+      const allOptions = await axios.get(`${BASEURL}api/multipleOption/getAll`);
       setAllQuestions(allOptions.data)
       setLoading(false)
     }
@@ -22,7 +22,7 @@ function App() {
   }
   const HandleDeleteQuestion = async (id) => {
     try {
-      const allOptions = await axios.delete(`http://localhost:8004/api/multipleOption/delete/${id}`);
+      const allOptions = await axios.delete(`${BASEURL}api/multipleOption/delete/${id}`);
       getAllMultipleOptions()
     }
     catch (err) {

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios";
+import { BASEURL } from "../utils";
 const FormComponent = ({ allQuestions, setAllQuestions }) => {
     const [questions, setQuestions] = useState([{ question: '', options: [] }]);
     const [addOptionButton, setAddOptionButton] = useState(true)
@@ -47,12 +48,11 @@ const FormComponent = ({ allQuestions, setAllQuestions }) => {
             try {
                 await axios
                     .post(
-                        "http://localhost:8004/api/multipleOption/add", questions[0], header);
+                        `${BASEURL}api/multipleOption/add`, questions[0], header);
             } catch (err) {
                 console.log(err)
             }
-            const allOptions = await axios.get("http://localhost:8004/api/multipleOption/getAll");
-            console.log(allOptions.data, "alloptions")
+            const allOptions = await axios.get(`${BASEURL}api/multipleOption/getAll`);
             setAllQuestions(allOptions.data)
         }
     }
