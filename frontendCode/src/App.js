@@ -3,17 +3,18 @@ import PreviewComponent from "./Components/PreviewComponent"
 import FormComponent from "./Components/FormComponent";
 import './App.css';
 import axios from "axios"
+import ClockLoader from "react-spinners/ClockLoader";
 
 
 function App() {
   const [allQuestions, setAllQuestions] = useState([]);
-
-
+  const [loading, setLoading] = useState(true);
   const getAllMultipleOptions = async () => {
+
     try {
       const allOptions = await axios.get("http://localhost:8004/api/multipleOption/getAll");
-      console.log(allOptions.data, "alloptions")
       setAllQuestions(allOptions.data)
+      setLoading(false)
     }
     catch (err) {
       console.log(err)
@@ -34,9 +35,19 @@ function App() {
   return (
     <div className="main">
       <h2 className="App_heading">Multiple Option App</h2>
+
       <div className="container">
         <FormComponent allQuestions={allQuestions} setAllQuestions={setAllQuestions} />
-        <PreviewComponent questions={allQuestions} DeleteQuestion={HandleDeleteQuestion} />
+        {loading
+          ?
+          <div className="loading">
+
+            <ClockLoader color="#36d7b7" />
+          </div>
+
+          :
+          <PreviewComponent questions={allQuestions} DeleteQuestion={HandleDeleteQuestion} />
+        }
       </div>
     </div>
   );
