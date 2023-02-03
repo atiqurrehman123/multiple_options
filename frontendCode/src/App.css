@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+.main {
+  BACKGROUND: DARKORCHID;
+
+}
+
+.container {
+  display: flex;
+  gap: 3px;
+  padding: 4px;
+}
+
+.question_adding_container {
+  width: 40%;
+
+}
+
+.question_adding_block {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #edd2ae;
+  padding: 5px;
+  border: 1px solid burlywood;
+
+}
+
+.App_heading {
+  text-align: center;
+  color: darksalmon;
+
+}
+
+.question_container {
+  padding: 10px;
+  background: darkgray;
+  border-radius: 14px;
+  margin-bottom: 5px;
+}
+
+.question_text {
+  color: darkgreen;
+}
+
+.Question_Main_Container {
+  width: 60%;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  background-color: seashell;
+  padding: 7px;
+  border: 3px solid darkgray;
+  border-radius: 20px;
+  color: mediumvioletred;
+}
+
+.question-text {
+  color: blueviolet;
+  font-size: 16px;
+}
+
+#addOption {
+  cursor: pointer;
+  border-radius: 20px 0px 20px 0px;
+  background-color: #fca311;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  transition: border-radius 500ms ease, transform 500ms ease;
+  height: 2rem;
+}
+
+#addOption:hover {
+  border-radius: 0px 20px 0px 20px;
+  transform: skew(-10deg);
+}
+
+#addOption:active {
+  transform: scale(0.9);
+}
+
+#submit {
+  cursor: pointer;
+  background-color: #55a630;
+  border: none;
+  border-radius: 50px;
+  width: 11.5rem;
+  height: 1.7rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 500ms ease;
+}
+
+#submit::before {
+  content: "";
+  background-color: #7c38d8;
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 500ms ease;
+}
+
+#submit::after {
+  content: "";
+  background-image: url("https://cdn-icons-png.flaticon.com/24/2767/2767192.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 0%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 500ms ease;
+}
+
+#submit:hover:before,
+#submit:hover:after {
+  width: 100%;
+}
+
+#submit:active {
+  transform: scale(0.9);
+}
+
+.option_input {
+  border: 2px solid darkgrey;
+  height: 20px;
+  border-radius: 5px;
+  width: 75%;
+}
+
+.remove_button {
+  cursor: pointer;
+  color: red;
+  background: #bce9bc;
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 4px;
+  border-radius: 0px 14px 14px 0px;
+}
+
+.remove_button:hover {
+  background-color: red;
+  color: white;
+}
+
+.question_heading {
+  display: flex;
+  justify-content: space-between;
+}
