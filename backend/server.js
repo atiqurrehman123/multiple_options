@@ -13,6 +13,9 @@ app.use(express.json())
 app.use(cors())
 
 // Multiple Option
+app.get("/", (req, res) => {
+    res.send("Server Running")
+})
 app.use("/api/multipleOption", multipleOption)
 
 
